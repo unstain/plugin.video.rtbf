@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.addon.id" name="RTBF Auvio" version="1.0" provider-name="Adelin Destain">
+	<requires>
+		<import addon="xbmc.python" version="2.1.0"/>
+	</requires>
+	<extension point="xbmc.python.pluginsource" library="addon.py">
+		<provides>audio video</provides>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary lang="en_gb">RTBF Auvio</summary>
+		<description lang="en_gb">Voir et ecouter en replay tout les programmes de la RTBF. Regarder ou ecouter en direct vos chaines TV et radio.</description>
+		<disclaimer lang="en_gb">Availability of content not always guaranteed to users outside of Belgium or the EU. For more information visit www.rtbf.be/auvio/faq/</disclaimer>
+		<language>Francais</language>
+		<platform>all</platform>
+		<license>Gnu General Public License, v2</license>
+		<forum></forum>
+		<website></website>
+		<email></email>
+		<source></source>
+		<news></news>
+		<assets>
+			<icon>icon.png</icon>
+			<fanart></fanart>
+			<screenshot>assets/screenshot-1.jpg</screenshot>
+			<screenshot>assets/screenshot-2.jpg</screenshot>
+			<screenshot>assets/screenshot-3.jpg</screenshot>
+		</assets>
+	</extension>
+</addon>
