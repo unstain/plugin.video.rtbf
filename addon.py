@@ -10,6 +10,7 @@ from bs4 import BeautifulSoup
 
 baseurl = sys.argv[0]
 addon_handle = int(sys.argv[1])
+my_addon = xbmcaddon.Addon('plugin.video.rtbf')
 args = urlparse.parse_qs(sys.argv[2][1:])
 listing = []
 
@@ -34,7 +35,9 @@ if mode is None:
 		print 'Parsing channel metadata at ' + chanurl
 		icon = page.find('img', attrs={'class':'img-responsive center-block'})['src']
 		name = page.find('meta', attrs={'property':'og:title'})['content']
+		descr = page.find('meta', attrs={'property':'og:description'})['content']
 		li = xbmcgui.ListItem(name, iconImage = icon)
+		li.setInfo('video',{'plot':descr})
 		url = baseurl + '?' + urllib.urlencode({'mode':'folder', 'chanurl':chanurl})
 		xbmcplugin.addDirectoryItem(handle = addon_handle, url = url, listitem = li, isFolder = True)
 
@@ -56,7 +59,8 @@ elif mode[0] == 'folder':
 			media = vidpage.find('meta', attrs={'itemprop':'contentURL'})['content']
 
 		list_item = xbmcgui.ListItem(label = title, thumbnailImage = image)
-		list_item.setInfo('video', {'tagline':descr})
+		list_item.setArt({'fanart':my_addon.getAddonInfo('fanart')})
+		list_item.setInfo('video', {'plot':descr})
 		listing.append((media, list_item, False))
 
 	xbmcplugin.addDirectoryItems(addon_handle, listing, len(listing))
